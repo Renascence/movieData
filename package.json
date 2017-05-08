@@ -1,0 +1,14 @@
+{
+  "name": "douban",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "author": "logging",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.2"
+  }
+}
