@@ -1,32 +1,17 @@
 var webpack = require('webpack');
-var path = require('path');
-var fs = require('fs');
-var nodeModules = {};
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  context: resolve(__dirname, 'src'),
-  entry: [
-    'react-hot-loader/patch',
-    'webpack-dev-server/client?http://localhost:8080',
-    'webpack/hot/only-dev-server',
-
-    path.resolve(__dirname, './src/app/main.js'),
-
-  ],
+  entry: __dirname + "/src/main.js",
   output: {
-    path: path.resolve(__dirname, './build'),
-    publicPath: '/',
+    path: __dirname + "/build",
     filename: 'main.js',
   },
   devtool: 'inline-source-map',
   devServer: {
     hot: true,
-    // 开启服务器的模块热替换(HMR)
-
-    contentBase: path.resolve(__dirname, 'build'),
-    // 输出文件的路径
-    publicPath: '/'
-    // 和上文 output 的“publicPath”值保持一致
+    contentBase: './build',
+    port: "7000",
   },
 
   module: {
@@ -37,8 +22,9 @@ module.exports = {
     }],
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NamedModulesPlugin(),
-
+    new HtmlWebpackPlugin({
+      title: 'My App',
+      filename: 'assets/admin.html'
+    }),
   ]
 };
