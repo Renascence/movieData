@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "start": "webpack-dev-server --content-base build --inline --hot"
+    "start": "webpack-dev-server --content-base build --inline --hot",
+    "lint": "./node_modules/.bin/eslint --fix ./src/"
   },
   "author": "logging",
   "license": "ISC",
@@ -23,6 +24,11 @@
     "babel-preset-stage-0": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "css-loader": "^0.28.1",
+    "eslint": "^4.8.0",
+    "eslint-config-airbnb": "^16.0.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.4.0",
     "html-webpack-plugin": "^2.30.1",
     "react-hot-loader": "^3.0.0-beta.7",
     "style-loader": "^0.17.0",
