@@ -1,3 +1,4 @@
+/* eslint-disable */
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -23,8 +24,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'My App',
-      filename: 'assets/admin.html'
+      template: './src/index.html'
     }),
   ]
 };
