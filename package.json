@@ -11,7 +11,6 @@
   "author": "logging",
   "license": "ISC",
   "dependencies": {
-    "babel-cli": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "express": "^4.15.2",
     "history": "^4.7.2",
@@ -23,9 +22,10 @@
     "redux": "^3.7.2"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
-    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-es2015-node6": "^0.4.0",
     "babel-preset-stage-0": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
     "css-loader": "^0.28.1",

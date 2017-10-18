@@ -13,6 +13,13 @@ module.exports = {
     hot: true,
     contentBase: './build',
     port: "7000",
+    proxy: {
+      '*': {
+        target: 'http://api.douban.com',
+        changeOrigin: true,
+        secure: false
+      }
+    },
   },
 
   module: {
