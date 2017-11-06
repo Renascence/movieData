@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack",
-    "start": "webpack-dev-server --content-base build --inline --hot",
+    "start": "node src/utils/getImages.js && webpack-dev-server --content-base build --inline --hot",
     "lint": "./node_modules/.bin/eslint --fix ./src/"
   },
   "author": "logging",
@@ -22,7 +22,8 @@
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^4.0.8",
-    "redux": "^3.7.2"
+    "redux": "^3.7.2",
+    "request": "^2.83.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
