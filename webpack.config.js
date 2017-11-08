@@ -1,6 +1,7 @@
 /* eslint-disable */
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: __dirname + "/src/App.js",
@@ -23,33 +24,35 @@ module.exports = {
   },
 
   module: {
-    rules: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader',
-        query: {
-          plugins: [
-            ['import', [{ libraryName: "antd", style: true }]],
-          ]
-        }
+    rules: [{
+      test: /\.js$/,
+      exclude: /node_modules/,
+      loader: 'babel-loader',
+      query: {
+        plugins: [
+          ['import', [{ libraryName: "antd", style: true }]],
+        ]
+      }
+    }, {
+      test: /\.css$/,
+      loader: 'style-loader!css-loader'
+    }, {
+      test: /\.less$/,
+      use: [{
+        loader: "style-loader"
       }, {
-        test: /\.css$/,
-        loader: 'style-loader!css-loader'
+        loader: "css-loader"
       }, {
-        test: /\.less$/,
-        use: [{
-          loader: "style-loader"
-        }, {
-          loader: "css-loader"
-        }, {
-          loader: "less-loader"
-        }]
+        loader: "less-loader"
       }]
+    }],
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: './src/index.html'
     }),
+    new CopyWebpackPlugin([
+      { from: __dirname + '/src/assets' }
+    ])
   ]
 };

@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Row, Col } from 'antd';
 import MovieCard from './MovieCard';
-
+import './home.less';
 
 function App(props) {
   return (
@@ -18,7 +18,7 @@ function App(props) {
 }
 
 App.propTypes = {
-  movie: PropTypes.arrayOf(React.PropTypes.array).isRequired,
+  movie: PropTypes.objectOf(React.PropTypes.object).isRequired,
 };
 
 function mapStateToProps({ movie }) {
