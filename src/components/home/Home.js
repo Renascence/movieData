@@ -4,7 +4,7 @@ import { Row, Col } from 'antd';
 import MovieCard from './MovieCard';
 import './home.less';
 
-function App(props) {
+function Home(props) {
   return (
     <div>
       <Row type="flex" gutter={8}>
@@ -17,7 +17,7 @@ function App(props) {
   );
 }
 
-App.propTypes = {
+Home.propTypes = {
   movie: PropTypes.objectOf(React.PropTypes.object).isRequired,
 };
 
@@ -25,4 +25,4 @@ function mapStateToProps({ movie }) {
   return { movie };
 }
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps)(Home);

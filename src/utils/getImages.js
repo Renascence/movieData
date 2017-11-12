@@ -28,8 +28,10 @@ request('https://api.douban.com/v2/movie/in_theaters', { json: true }, (err, res
     return;
   }
   removeImg(imgDirPath); // clear dir img
-  body.subjects.forEach((item) => {
-    downloadImg(item.images.large, getImgName(item.images));
-  });
-  console.log('download images done ~');
+  if (body.subjects) {
+    body.subjects.forEach((item) => {
+      downloadImg(item.images.large, getImgName(item.images));
+    });
+    console.log('download images done ~');
+  }
 });

@@ -7,13 +7,16 @@ module.exports = {
   entry: __dirname + "/src/App.js",
   output: {
     path: __dirname + "/build",
-    filename: 'main.js',
+    filename: '[name].bundle.js',
+    publicPath: '/'
   },
   devtool: 'inline-source-map',
   devServer: {
     hot: true,
-    contentBase: './build',
     port: "7000",
+    contentBase: __dirname + "/build",
+    inline: true,
+    historyApiFallback: true,
     proxy: {
       '*': {
         target: 'http://api.douban.com',
