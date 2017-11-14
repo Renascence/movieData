@@ -19,15 +19,17 @@ const store = createStore(combineReducers({
 const history = syncHistoryWithStore(createBrowserHistory(), store);
 
 history.listen(async () => {
-  if (window.location.pathname === '/') {
-    const data = await getRencentMovies();
-    store.dispatch({ type: HOME_DATA, payload: data.subjects });
+  if (history.location.hash === '#/') {
+    if (!store.getState().movie.length) {
+      const data = await getRencentMovies();
+      store.dispatch({ type: HOME_DATA, payload: data.subjects });
+    }
   }
 });
 
 ReactDOM.render(
   <Provider store={store}>
-    <HashRouter history={history}>
+    <HashRouter>
       <div>
         <Route path="/" exact component={Home} />
         <Route path="/movieDetail/:id" exact component={MovieDetail} />

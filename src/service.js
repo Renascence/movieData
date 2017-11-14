@@ -7,3 +7,7 @@ export default function getRencentMovies() {
 export function getMovieInfo(id) {
   return request(`/v2/movie/subject/${id}`);
 }
+
+export function getComments(id) {
+  return request(`/v2/movie/subject/${id}/comments`);
+}
