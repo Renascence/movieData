@@ -20,8 +20,10 @@ const history = syncHistoryWithStore(createBrowserHistory(), store);
 
 history.listen(async () => {
   if (window.location.pathname === '/') {
-    const data = await getRencentMovies();
-    store.dispatch({ type: HOME_DATA, payload: data.subjects });
+    if (!store.getState().movie.length) {
+      const data = await getRencentMovies();
+      store.dispatch({ type: HOME_DATA, payload: data.subjects });
+    }
   }
 });
 

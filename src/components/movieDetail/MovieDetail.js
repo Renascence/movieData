@@ -17,6 +17,8 @@ export default class MovieDetail extends React.Component {
         average: 0,
       },
       ratings_count: 0,
+      directors: [],
+      casts: [],
     };
   }
 
@@ -26,8 +28,6 @@ export default class MovieDetail extends React.Component {
   }
 
   render() {
-    console.log('----', this.state);
-
     return (
       <div className="movieDetail">
         <div className="poster">
@@ -46,7 +46,26 @@ export default class MovieDetail extends React.Component {
           </div>
         </div>
         <p className="summary">简介：{this.state.summary}</p>
-
+        <div className="casts">
+          <h3>导演</h3>
+          {this.state.directors.map(item =>
+            (<Link key={item.id} to={item.alt}>
+              <img src={`http://www.beihaiw.com/pic.php?url=${item.avatars.small}`} />
+              <p>{item.name}</p>
+            </Link>))}
+          <h3>演员</h3>
+          <div style={{ width: '100%', overflow: 'auto' }}>
+            <div style={{ width: this.state.casts.length * 120 }}>
+              {this.state.casts.map(item =>
+                (
+                  <Link key={item.id} to={item.alt} style={{ width: 120 }} style={{ display: 'inline-block', width: 120 }}>
+                    <img src={item.avatars.small} />
+                    <p>{item.name}</p>
+                  </Link>
+                ))}
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
