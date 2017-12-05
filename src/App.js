@@ -2,35 +2,24 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { createStore, combineReducers } from 'redux';
 import { Provider } from 'react-redux';
-import { Route, HashRouter, Redirect } from 'react-router-dom';
-import { createBrowserHistory } from 'history';
-import { syncHistoryWithStore, routerReducer } from 'react-router-redux';
+import { Route, HashRouter } from 'react-router-dom';
+import { routerReducer } from 'react-router-redux';
+import Nav from './components/nav/Nav';
 import Home from './components/home/Home';
 import MovieDetail from './components/movieDetail/MovieDetail';
-import getRencentMovies from './service';
 import movie from './reducers/home';
-import { HOME_DATA } from './actions/home';
 
 const store = createStore(combineReducers({
   movie,
   routing: routerReducer,
 }));
 
-const history = syncHistoryWithStore(createBrowserHistory(), store);
-
-history.listen(async () => {
-  if (history.location.hash === '#/') {
-    if (!store.getState().movie.length) {
-      const data = await getRencentMovies();
-      store.dispatch({ type: HOME_DATA, payload: data.subjects });
-    }
-  }
-});
 
 ReactDOM.render(
   <Provider store={store}>
     <HashRouter>
       <div>
+        <Route component={Nav} />
         <Route path="/" exact component={Home} />
         <Route path="/movieDetail/:id" exact component={MovieDetail} />
       </div>

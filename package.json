@@ -4,7 +4,7 @@
   "description": "",
   "main": "webpack.config.js",
   "scripts": {
-    "build": "webpack",
+    "build": "webpack --progress --profile --colors",
     "start": "node src/utils/getImages.js && webpack-dev-server --content-base --inline --hot --open",
     "lint": "./node_modules/.bin/eslint --fix ./src/"
   },
