@@ -14,7 +14,6 @@ const store = createStore(combineReducers({
   routing: routerReducer,
 }));
 
-
 ReactDOM.render(
   <Provider store={store}>
     <HashRouter>
