@@ -8,12 +8,12 @@ class Pie extends React.Component {
   }
 
   getOption = () => {
-    console.log('eeee', this.props);
     return {
       title: {
         text: '热门电影'
       },
       tooltip: {},
+      color: ['#F0A046', '#50B4E6', '#ccc', '#FFA07A', '#96DC00'],
       series: [{
         type: 'pie',
         data: this.props.movie.map(item => ({
