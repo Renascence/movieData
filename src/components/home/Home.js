@@ -4,6 +4,7 @@ import { Row, Col } from 'antd';
 import MovieCard from './MovieCard';
 import { HOME_DATA } from '../../actions/home';
 import getRencentMovies from '../../service';
+import Pie from '../charts/Pie';
 
 class Home extends React.Component {
   async componentDidMount() {
@@ -16,6 +17,7 @@ class Home extends React.Component {
   render() {
     return (
       <div>
+        <Pie />
         <Row type="flex" gutter={8}>
           {
             this.props.movie.map(item =>
