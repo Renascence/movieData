@@ -10,7 +10,7 @@ class Pie extends React.Component {
   getOption = () => {
     return {
       title: {
-        text: '热门电影'
+        text: '最受欢迎',
       },
       tooltip: {},
       color: ['#F0A046', '#50B4E6', '#ccc', '#FFA07A', '#96DC00'],

@@ -1,23 +1,31 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { Row, Col } from 'antd';
+import { Row, Col, Carousel } from 'antd';
 import MovieCard from './MovieCard';
-import { HOME_DATA } from '../../actions/home';
+import { updateMovies } from '../../actions/home';
 import getRencentMovies from '../../service';
 import Pie from '../charts/Pie';
+import Rate from '../charts/Rate';
 
 class Home extends React.Component {
   async componentDidMount() {
     if (!this.props.movie.length) {
       const data = await getRencentMovies();
-      this.props.dispatch({ type: HOME_DATA, payload: data.subjects });
+      this.props.dispatch(updateMovies(data.subjects));
     }
   }
 
   render() {
     return (
       <div>
-        <Pie />
+        <Carousel autoplay vertical>
+          <div style={{ width: '100%' }}>
+            <Pie />
+          </div>
+          <div style={{ width: '100%' }}>
+            <Rate />
+          </div>
+        </Carousel>
         <Row type="flex" gutter={8}>
           {
             this.props.movie.map(item =>
