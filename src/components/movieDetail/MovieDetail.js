@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { getMovieInfo } from '../../service';
 import { getImageNameFromUrl } from '../../utils';
+import Image from '../image/Image';
 import './detail.less';
 
 export default class MovieDetail extends React.Component {
@@ -28,10 +29,21 @@ export default class MovieDetail extends React.Component {
   }
 
   render() {
+    const linkStyle = {
+      display: 'inline-block',
+      width: 120,
+      marginRight: 5,
+    };
+    const avatarsStyle = {
+      width: '100%;',
+    };
+    const nameStyle = {
+      textAlign: 'center',
+    };
     return (
       <div className="movieDetail">
         <div className="poster">
-          <img src={`/img/${getImageNameFromUrl(this.state.images.large)}`} />
+          <Image url={this.state.images.large} />
         </div>
         <div className="baseInfo">
           <div>
@@ -49,18 +61,18 @@ export default class MovieDetail extends React.Component {
         <div className="casts">
           <h3>导演</h3>
           {this.state.directors.map(item =>
-            (<Link key={item.id} to={item.alt}>
-              <img src={item.avatars.small} />
-              <p>{item.name}</p>
+            (<Link key={item.id} to={item.alt} style={linkStyle}>
+              <Image url={item.avatars.small} style={avatarsStyle} />
+              <p style={nameStyle}>{item.name}</p>
             </Link>))}
           <h3>演员</h3>
           <div style={{ width: '100%', overflow: 'auto' }}>
-            <div style={{ width: this.state.casts.length * 120 }}>
+            <div style={{ width: this.state.casts.length * 125 }}>
               {this.state.casts.map(item =>
                 (
-                  <Link key={item.id} to={item.alt} style={{ display: 'inline-block', width: 120 }}>
-                    <img src={item.avatars.small} />
-                    <p>{item.name}</p>
+                  <Link key={item.id} to={item.alt} style={linkStyle}>
+                    <Image url={item.avatars.small} style={avatarsStyle} />
+                    <p style={nameStyle}>{item.name}</p>
                   </Link>
                 ))}
             </div>

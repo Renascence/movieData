@@ -6,7 +6,24 @@
   ![image](https://github.com/Renascence/movieData/blob/master/images/list.png)
   ![image](https://github.com/Renascence/movieData/blob/master/images/detail.png)
 
+## Quick start
+
+```
+  1. git clone git@github.com:Renascence/movieData.git
+```
+
+```
+  2. cd movieData && npm install
+```
+
+```
+  3. ./imgServer.sh
+```
+
+```
+  4. npm start
+```
 ### TODO
 
-- 解决电影详情页面的导演/演员头像返回403
+- 解决电影详情页面的导演/演员头像返回403(done)
 - 解决部分api需要token才能访问
