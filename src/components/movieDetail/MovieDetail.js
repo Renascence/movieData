@@ -24,8 +24,11 @@ export default class MovieDetail extends React.Component {
   }
 
   async componentDidMount() {
-    const data = await getMovieInfo(this.props.match.params.id);
-    this.setState({ ...data });
+    console.log('this.props.',this.props);
+    if (this.props.match && this.props.match.params) {
+      const data = await getMovieInfo(this.props.match.params.id);
+      this.setState({ ...data });
+    }
   }
 
   render() {

@@ -5,9 +5,8 @@ import { Provider } from 'react-redux';
 import { Route, HashRouter } from 'react-router-dom';
 import { routerReducer } from 'react-router-redux';
 import Nav from './components/nav/Nav';
-import Home from './components/home/Home';
-import MovieDetail from './components/movieDetail/MovieDetail';
 import movie from './reducers/home';
+import Bundle from './components/bundle/Bundle';
 
 const store = createStore(combineReducers({
   movie,
@@ -19,8 +18,24 @@ ReactDOM.render(
     <HashRouter>
       <div>
         <Route component={Nav} />
-        <Route path="/" exact component={Home} />
-        <Route path="/movieDetail/:id" exact component={MovieDetail} />
+        <Route
+          path="/"
+          exact
+          render={() => (
+            <Bundle load={require('bundle-loader?lazy!./components/home/Home')}>
+              {Home => <Home />}
+            </Bundle>)
+          }
+        />
+        <Route
+          path="/movieDetail/:id"
+          exact
+          render={props => (
+            <Bundle load={require('bundle-loader?lazy!./components/movieDetail/MovieDetail')}>
+              {MovieDetail => <MovieDetail {...props} />}
+            </Bundle>)
+          }
+        />
       </div>
     </HashRouter>
   </Provider>,
