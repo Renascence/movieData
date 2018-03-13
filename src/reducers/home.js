@@ -1,10 +1,10 @@
-import { HOME_DATA } from '../actions/home';
+import { FETCH_HOME_DATA_SUCCESS } from '../actions/constants';
 
 const initialState = [];
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case HOME_DATA:
+    case FETCH_HOME_DATA_SUCCESS:
       return action.payload;
     default:
       return state;

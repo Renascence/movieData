@@ -2,16 +2,14 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { Row, Col, Carousel } from 'antd';
 import MovieCard from './MovieCard';
-import { updateMovies } from '../../actions/home';
-import getRencentMovies from '../../service';
+import { FETCH_HOME_DATA } from '../../actions/constants';
 import Pie from '../charts/Pie';
 import Rate from '../charts/Rate';
 
 class Home extends React.Component {
-  async componentDidMount() {
+  componentDidMount() {
     if (!this.props.movie.length) {
-      const data = await getRencentMovies();
-      this.props.dispatch(updateMovies(data.subjects));
+      this.props.dispatch({ type: FETCH_HOME_DATA });
     }
   }
 
